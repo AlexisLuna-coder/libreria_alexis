@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    @extends('layouts.app')
+    @section('content')
+        <center><h1 class="fst-italic">Inicio de sesión</h1></center>
+        <form action=" {{ route('acceso.store') }}" method="POST">
+            @csrf 
+            <input type="email" name="email" placeholder="Correo" class="form-control" required>
+            <br>
+            <input type="password" name="password" placeholder="Contraseña" class="form-control" required>
+            <br>
+            <button type="submit" class = "btn btn-outline-success">Iniciar sesión</button>
+        </form>
+    @endsection
+    
+</body>
+</html>

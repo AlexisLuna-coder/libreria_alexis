@@ -9,7 +9,16 @@ Route::get('/', function () {
 });
 
 //DOBLE :: ES UN OPERADOR DE RELACIÓN ENTRE CLASES, SE USA PARA LLAMAR A UN MÉTODO O UNA PROPIEDAD DE UNA CLASE
+//2026-03-04
+Route::middleware(['auth'])->group(function () {
+    // ! RUTA PARA OBTENER LOS METODOS DE LIBRO CONTROLLER
+    Route::resource('libros', LibroController::class);
+});
 
+// RUTA PARA MOSTRAR CATALOGO DE LIBROS
+Route::get('/home', [
+    LibroController::class, 'home'
+])->name('home');
 
 // ! RUTA PARA OBTENER LA INFORMACIÓN DE UN SOLO LIBRO
 //*: Se escribe la ruta como queremos que se escriba en el navegador
@@ -53,11 +62,6 @@ Route::post('/cerrar', [
     AuthController::class, 'logout'
 ])->name('cerrar');
 
-//2026-03-04
-Route::middleware(['auth'])->group(function () {
-    // ! RUTA PARA OBTENER LOS METODOS DE LIBRO CONTROLLER
-    Route::resource('libros', LibroController::class);
-});
 
 
 //Con esto se indica el uso de dos MIDDLEWORE, EL DE AUTENTICACIÓN Y ADMINISTRADOR

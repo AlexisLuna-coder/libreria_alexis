@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    #AQUÍ ES MODIFICACI´N - 2026/03/24
+    'google_books' => [
+        #AQUÍ ESTAN TODOS LOS SERV. DE TERCEOS; APIs DEBERAN SER AQUÍ
+        'key' => env('GOOGLE_BOOKS_KEY'),
+        
+    ]
+
 ];

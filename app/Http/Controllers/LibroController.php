@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http; //2026-03-24
+
 use App\Models\Libro;
 
 class LibroController extends Controller
@@ -96,5 +98,33 @@ class LibroController extends Controller
 
         return redirect()->route('libros.index')
         ->with('success', 'Libro eliminado correctamente');
+    }
+
+    //MÉTODO PARA HOME
+    public function home(){
+        //LIBROS DE HISTORIA
+        //Manejar respuesta de la API
+        $history = Http::get('https://www.googleapis.com/books/v1/volumes', [ 
+            //INCLUIR LOS PARAMETROS DEL MANEJO DE API
+            'q' => 'subject: history',
+            'maxResults' => 12,
+            'key' => config('services.google_books.key'),
+        ])->json()['items'] ?? [];
+
+        //! LIBROS DE FANTASÍA
+
+        $fantasy = Http::get('https://www.googleapis.com/books/v1/volumes', [ 
+            //INCLUIR LOS PARAMETROS DEL MANEJO DE API
+            'q' => 'subject: fantasy',
+            'maxResults' => 12,
+            'key' => config('services.google_books.key'),
+        ])->json()['items'] ?? [];
+
+
+
+        //Guardar los libros y enviarlos a la vista
+        // $libros = $response -> json()['items'] ?? []; //Operados ternario - Si tiene objetos lo envia, y si no es vacio
+
+        return view('libros.home', compact('history', 'fantasy'));
     }
 }

@@ -107,7 +107,7 @@ class LibroController extends Controller
         $history = Http::get('https://www.googleapis.com/books/v1/volumes', [ 
             //INCLUIR LOS PARAMETROS DEL MANEJO DE API
             'q' => 'subject: history',
-            'maxResults' => 12,
+            'maxResults' => 5,
             'key' => config('services.google_books.key'),
         ])->json()['items'] ?? [];
 
@@ -116,7 +116,7 @@ class LibroController extends Controller
         $fantasy = Http::get('https://www.googleapis.com/books/v1/volumes', [ 
             //INCLUIR LOS PARAMETROS DEL MANEJO DE API
             'q' => 'subject: fantasy',
-            'maxResults' => 12,
+            'maxResults' => 5,
             'key' => config('services.google_books.key'),
         ])->json()['items'] ?? [];
 

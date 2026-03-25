@@ -12,8 +12,14 @@
     <h1>LIBROS DISPONIBLES</h1>
     
     <div class = "main-container">
-        <!-- SIDEBAR
-        CONTENIDO -->
+        <!-- SIDEBAR -->
+        <aside class = "sidebar">
+
+        </aside>
+        <!-- CONTENIDO -->
+        <main class = "content">
+            
+        </main>
     </div>
 </body>
 </html>
